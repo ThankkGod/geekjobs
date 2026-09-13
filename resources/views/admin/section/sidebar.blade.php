@@ -1,0 +1,338 @@
+  <!-- Brand Logo -->
+            <div class="logo-box">
+                <!-- Brand Logo Light -->
+                <a href="index.html" class="logo-light">
+                    <img src="{{asset('backend/assets/images/logo-light.png')}}" alt="logo" class="logo-lg" height="28">
+                    <img src="{{asset('backend/assets/images/logo-sm.png')}}" alt="small logo" class="logo-sm" height="28">
+                </a>
+
+                <!-- Brand Logo Dark -->
+                <a href="index.html" class="logo-dark">
+                    <img src="{{asset('backend/assets/images/logo-dark.png')}}" alt="dark logo" class="logo-lg" height="28">
+                    <img src="{{asset('backend/assets/images/logo-sm.png')}}" alt="small logo" class="logo-sm" height="28">
+                </a>
+            </div>
+
+            <!--- Menu -->
+            <div data-simplebar>
+                <ul class="app-menu">
+
+                    <li class="menu-title">Menu</li>
+
+                    <li class="menu-item">
+                        <a href="{{ route('admin.index') }}" class="menu-link waves-effect waves-light">
+                            <span class="menu-icon"><i class="bx bx-home-smile"></i></span>
+                            <span class="menu-text"> Dashboards </span>
+                            
+                        </a>
+                    </li>
+
+                    <li class="menu-title">Admin Profile</li>
+                    <li class="menu-item">
+                        <a href="#menuExpages" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                            <span class="menu-icon"><i class="mdi mdi-face-profile"></i></span>
+                            <span class="menu-text"> Profile </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="menuExpages">
+                            <ul class="sub-menu">
+                                <li class="menu-item">
+                                    <a href="{{ route('admin.profile.index') }}" class="menu-link">
+                                        <span class="menu-text">View Profile</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{{ route('admin.edit.profile') }}" class="menu-link">
+                                        <span class="menu-text">Profile Settings</span>
+                                    </a>
+                            </ul>
+                        </div>
+                    </li>
+
+                    {{-- agent  --}}
+                     <li class="menu-title">Agents</li>
+                    <li class="menu-item">
+                        <a href="#menuExpage" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                            <span class="menu-icon"><i class="mdi mdi-face-profile"></i></span>
+                            <span class="menu-text"> All agents </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="menuExpage">
+                            <ul class="sub-menu">
+                                <li class="menu-item">
+                                    <a href="{{ route('agents.index') }}" class="menu-link">
+                                        <span class="menu-text">Manage Agents</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{{ route('agents.create') }}" class="menu-link">
+                                        <span class="menu-text">Create Agent</span>
+                                    </a>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="#menuLayouts" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                            <span class="menu-icon"><i class="mdi mdi-post-outline"></i></span>
+                            <span class="menu-text"> Job Category</span>
+                            <span class="badge bg-blue ms-auto"></span>
+                        </a>
+                        <div class="collapse" id="menuLayouts">
+                            <ul class="sub-menu">
+                                <li class="menu-item">
+                                    <a href="{{ route('categories.create') }}" class="menu-link">
+                                        <span class="menu-text">Create Category </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="menu-title">Home Gallery</li>
+
+                    <li class="menu-item">
+                        <a href="#menuComponentsui" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                            <span class="menu-icon"><i class="bx bx-cookie"></i></span>
+                            <span class="menu-text"> Gallery </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="menuComponentsui">
+                            <ul class="sub-menu">
+                                <li class="menu-item">
+                                    <a href="{{ route('gallery.index') }}" class="menu-link">
+                                        <span class="menu-text">Manage gallery</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{{ route('gallery.create') }}" class="menu-link">
+                                        <span class="menu-text">Create gallery</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="#menuExtendedui" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                            <span class="menu-icon"><i class="bx bx-briefcase-alt-2"></i></span>
+                            <span class="menu-text"> Agent Request </span>
+                        </a>
+                        <div class="collapse" id="menuExtendedui">
+                            <ul class="sub-menu">
+                                <li class="menu-item">
+                                    <a href="{{ route('admin.accept.agent.request') }}" class="menu-link">
+                                        <span class="menu-text">Request</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="#menuIcons" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                            <span class="menu-icon"><i class="bx bx-aperture"></i></span>
+                            <span class="menu-text"> Icons </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="menuIcons">
+                            <ul class="sub-menu">
+                                <li class="menu-item">
+                                    <a href="icons-feather.html" class="menu-link">
+                                        <span class="menu-text">Feather Icons</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="icons-mdi.html" class="menu-link">
+                                        <span class="menu-text">Material Design Icons</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="icons-dripicons.html" class="menu-link">
+                                        <span class="menu-text">Dripicons</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="#menuForms" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                            <span class="menu-icon"><i class="bx bxs-eraser"></i></span>
+                            <span class="menu-text"> Forms </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="menuForms">
+                            <ul class="sub-menu">
+                                <li class="menu-item">
+                                    <a href="forms-elements.html" class="menu-link">
+                                        <span class="menu-text">General Elements</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="forms-advanced.html" class="menu-link">
+                                        <span class="menu-text">Advanced</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="forms-validation.html" class="menu-link">
+                                        <span class="menu-text">Validation</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="forms-quilljs.html" class="menu-link">
+                                        <span class="menu-text">Editor</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="forms-file-uploads.html" class="menu-link">
+                                        <span class="menu-text">File Uploads</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="#menuTables" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                            <span class="menu-icon"><i class="bx bx-table"></i></span>
+                            <span class="menu-text"> Tables </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="menuTables">
+                            <ul class="sub-menu">
+                                <li class="menu-item">
+                                    <a href="tables-basic.html" class="menu-link">
+                                        <span class="menu-text">Basic Tables</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="tables-datatables.html" class="menu-link">
+                                        <span class="menu-text">Data Tables</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="#menuCharts" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                            <span class="menu-icon"><i class="bx bx-doughnut-chart"></i></span>
+                            <span class="menu-text"> Charts </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="menuCharts">
+                            <ul class="sub-menu">
+                                <li class="menu-item">
+                                    <a href="charts-apex.html" class="menu-link">
+                                        <span class="menu-text">Apex Charts</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="charts-morris.html" class="menu-link">
+                                        <span class="menu-text">Morris Charts</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="charts-chartjs.html" class="menu-link">
+                                        <span class="menu-text">Chartjs Charts</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="#menuMaps" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                            <span class="menu-icon"><i class="bx bx-map-alt"></i></span>
+                            <span class="menu-text"> Maps </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="menuMaps">
+                            <ul class="sub-menu">
+                                <li class="menu-item">
+                                    <a href="maps-google.html" class="menu-link">
+                                        <span class="menu-text">Google Maps</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="maps-vector.html" class="menu-link">
+                                        <span class="menu-text">Vector Maps</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="#menuMultilevel" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                            <span class="menu-icon"><i class="bx bx-share-alt"></i></span>
+                            <span class="menu-text"> Multi Level </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="menuMultilevel">
+                            <ul class="sub-menu">
+                                <li class="menu-item">
+                                    <a href="#menuMultilevel2" data-bs-toggle="collapse"
+                                        class="menu-link waves-effect waves-light">
+                                        <span class="menu-text"> Second Level </span>
+                                        <span class="menu-arrow"></span>
+                                    </a>
+                                    <div class="collapse" id="menuMultilevel2">
+                                        <ul class="sub-menu">
+                                            <li class="menu-item">
+                                                <a href="javascript: void(0);" class="menu-link">
+                                                    <span class="menu-text">Item 1</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="javascript: void(0);" class="menu-link">
+                                                    <span class="menu-text">Item 2</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li class="menu-item">
+                                    <a href="#menuMultilevel3" data-bs-toggle="collapse"
+                                        class="menu-link waves-effect waves-light">
+                                        <span class="menu-text">Third Level</span>
+                                        <span class="menu-arrow"></span>
+                                    </a>
+                                    <div class="collapse" id="menuMultilevel3">
+                                        <ul class="sub-menu">
+                                            <li class="menu-item">
+                                                <a href="javascript: void(0);" class="menu-link">
+                                                    <span class="menu-text">Item 1</span>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="#menuMultilevel4" data-bs-toggle="collapse"
+                                                    class="menu-link waves-effect waves-light">
+                                                    <span class="menu-text">Item 2</span>
+                                                    <span class="menu-arrow"></span>
+                                                </a>
+                                                <div class="collapse" id="menuMultilevel4">
+                                                    <ul class="sub-menu">
+                                                        <li class="menu-item">
+                                                            <a href="javascript: void(0);" class="menu-link">
+                                                                <span class="menu-text">Item 1</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="menu-item">
+                                                            <a href="javascript: void(0);" class="menu-link">
+                                                                <span class="menu-text">Item 2</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
