@@ -4,6 +4,10 @@ set -e
 
 echo "Starting Laravel application..."
 
+echo "Testing database connection..."
+
+php artisan db:show --database=mysql
+
 # Fix permissions
 chown -R www-data:www-data /var/www/html/storage
 chown -R www-data:www-data /var/www/html/bootstrap/cache
