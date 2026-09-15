@@ -98,7 +98,6 @@ RUN rm -f /etc/nginx/sites-enabled/default \
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 
-
 # =========================================================
 # Startup script
 # =========================================================
