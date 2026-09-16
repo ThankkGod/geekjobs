@@ -31,9 +31,6 @@ echo "Testing database connection..."
 
 php artisan db:show
 
-echo "Running production database seeder..."
-
-php artisan db:seed --force
 
 echo "Creating storage link..."
 
