@@ -21,6 +21,18 @@ sed -i "s/__PORT__/$PORT/g" /etc/nginx/conf.d/default.conf
 
 echo "Testing database connection..."
 
+echo "Checking Laravel database configuration..."
+
+php artisan tinker --execute="
+dump([
+    'DB_HOST' => config('database.connections.mysql.host'),
+    'DB_PORT' => config('database.connections.mysql.port'),
+    'DB_DATABASE' => config('database.connections.mysql.database'),
+    'DB_USERNAME' => config('database.connections.mysql.username'),
+    'SSL_CA' => config('database.connections.mysql.options.' . PDO::MYSQL_ATTR_SSL_CA),
+]);
+"
+
 php artisan db:show
 
 echo "Creating storage link..."
