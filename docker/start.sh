@@ -2,38 +2,34 @@
 
 set -e
 
-echo "Starting Laravel application..."
+echo "Starting GeekJobs Laravel application..."
+
+# Render provides the PORT environment variable.
+PORT=${PORT:-10000}
+
+echo "Using port: $PORT"
+
+# Replace __PORT__ in nginx configuration
+sed -i "s/__PORT__/$PORT/g" /etc/nginx/conf.d/default.conf
 
 echo "Testing database connection..."
 
-php artisan db:show --database=mysql
+php artisan db:show || true
 
-echo "Running database migrations..."
+echo "Creating storage link..."
 
-php artisan migrate --force
-
-# Fix permissions
-chown -R www-data:www-data /var/www/html/storage
-chown -R www-data:www-data /var/www/html/bootstrap/cache
-
-chmod -R 775 /var/www/html/storage
-chmod -R 775 /var/www/html/bootstrap/cache
-
-# Clear configuration cache
-php artisan config:clear
-
-# Create storage symlink
 php artisan storage:link || true
+
+echo "Clearing Laravel caches..."
+
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
 
 echo "Starting PHP-FPM..."
 
 php-fpm -D
-echo "Starting Laravel log output..."
 
-touch /var/www/html/storage/logs/laravel.log
-
-tail -F /var/www/html/storage/logs/laravel.log &
-
-echo "Starting Nginx..."
+echo "Starting Nginx on port $PORT..."
 
 nginx -g "daemon off;"
