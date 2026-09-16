@@ -33,6 +33,31 @@ php artisan config:clear
 php artisan route:clear
 php artisan view:clear
 
+
+
+echo "Testing Laravel PDO SSL connection..."
+
+php -r '
+try {
+    $pdo = new PDO(
+        "mysql:host=" . getenv("DB_HOST") . ";port=" . getenv("DB_PORT") . ";dbname=" . getenv("DB_DATABASE"),
+        getenv("DB_USERNAME"),
+        getenv("DB_PASSWORD"),
+        [
+            PDO::MYSQL_ATTR_SSL_CA => getenv("MYSQL_ATTR_SSL_CA"),
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ]
+    );
+
+    echo "Laravel PDO SSL connection: SUCCESS\n";
+} catch (Throwable $e) {
+    echo "Laravel PDO SSL connection: FAILED\n";
+    echo $e->getMessage() . "\n";
+    exit(1);
+}
+'
+
+
 echo "Starting PHP-FPM..."
 
 php-fpm -D
