@@ -4,17 +4,16 @@ set -e
 
 echo "Starting GeekJobs Laravel application..."
 
-# Render provides the PORT environment variable.
 PORT=${PORT:-10000}
 
 echo "Using port: $PORT"
 
-# Replace __PORT__ in nginx configuration
+# Replace __PORT__ with Render's actual port
 sed -i "s/__PORT__/$PORT/g" /etc/nginx/conf.d/default.conf
 
 echo "Testing database connection..."
 
-php artisan db:show || true
+php artisan db:show
 
 echo "Creating storage link..."
 
