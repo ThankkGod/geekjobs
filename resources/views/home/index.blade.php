@@ -4,6 +4,7 @@
     <!--== Start Hero Area Wrapper ==-->
     <section class="home-slider-area">
         @foreach ($galleries as $gallery)
+        {{ dd($galleries->pluck('gallery_image')) }}
             <div class="home-slider-container default-slider-container">
                 <div class="home-slider-wrapper slider-default">
                     <div class="slider-content-area" data-bg-img="{{ asset($gallery->gallery_image) }}">
