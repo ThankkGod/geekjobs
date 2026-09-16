@@ -90,9 +90,29 @@ try {
 '
 
 
+echo "Checking PHP-FPM SSL environment..."
+
+php-fpm -tt 2>&1 | head -50
+
 echo "Starting PHP-FPM..."
 
 php-fpm -D
+
+sleep 2
+
+echo "Checking PHP-FPM process..."
+
+ps aux | grep php-fpm
+
+echo "Checking PHP-FPM environment..."
+
+PHP_FPM_PID=$(pgrep -o php-fpm)
+
+if [ -n "$PHP_FPM_PID" ]; then
+    tr '\0' '\n' < /proc/$PHP_FPM_PID/environ | grep -E '^(DB_|MYSQL_)' | sed 's/DB_PASSWORD=.*/DB_PASSWORD=HIDDEN/'
+fi
+
+
 
 echo "Starting Nginx on port $PORT..."
 
