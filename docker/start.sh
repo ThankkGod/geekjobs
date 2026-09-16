@@ -61,4 +61,5 @@ php-fpm -D
 
 echo "Starting Nginx on port $PORT..."
 
+tail -F /var/www/html/storage/logs/laravel.log &
 nginx -g "daemon off;"
