@@ -51,10 +51,9 @@ RUN apt-get update && apt-get install -y \
 # =========================================================
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
+# Allow PHP-FPM workers to inherit Render environment variables
+RUN sed -i 's/^;clear_env = no/clear_env = no/' /usr/local/etc/php-fpm.d/www.conf
 
-# =========================================================
-# Laravel application
-# =========================================================
 WORKDIR /var/www/html
 
 COPY . .
