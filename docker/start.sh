@@ -4,6 +4,25 @@ set -e
 
 echo "Starting GeekJobs Laravel application..."
 
+echo "Preparing upload directories..."
+
+mkdir -p /var/www/html/public/gallery
+mkdir -p /var/www/html/public/uploads
+mkdir -p /var/www/html/public/features
+mkdir -p /var/www/html/public/cvs
+
+chown -R www-data:www-data /var/www/html/public/gallery
+chown -R www-data:www-data /var/www/html/public/uploads
+chown -R www-data:www-data /var/www/html/public/features
+chown -R www-data:www-data /var/www/html/public/cvs
+
+chmod -R 775 /var/www/html/public/gallery
+chmod -R 775 /var/www/html/public/uploads
+chmod -R 775 /var/www/html/public/features
+chmod -R 775 /var/www/html/public/cvs
+
+
+
 PORT=${PORT:-10000}
 
 echo "Using port: $PORT"
