@@ -3,7 +3,7 @@
 @section('content')
     <!--== Start Hero Area Wrapper ==-->
     <section class="home-slider-area">
-        {{ dd($galleries->pluck('gallery_image')) }}
+        @foreach ($galleries as $gallery)
             <div class="home-slider-container default-slider-container">
                 <div class="home-slider-wrapper slider-default">
                     <div class="slider-content-area" data-bg-img="{{ asset($gallery->gallery_image) }}">
