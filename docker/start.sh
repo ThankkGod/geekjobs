@@ -21,39 +21,7 @@ sed -i "s/__PORT__/$PORT/g" /etc/nginx/conf.d/default.conf
 
 echo "Testing database connection..."
 
-echo "Checking Laravel database configuration..."
-
-php artisan tinker --execute="
-dump([
-    'DB_HOST' => config('database.connections.mysql.host'),
-    'DB_PORT' => config('database.connections.mysql.port'),
-    'DB_DATABASE' => config('database.connections.mysql.database'),
-    'DB_USERNAME' => config('database.connections.mysql.username'),
-    'SSL_CA' => config('database.connections.mysql.options.' . PDO::MYSQL_ATTR_SSL_CA),
-]);
-"
-
 php artisan db:show
-
-echo "Testing Laravel DB manager..."
-
-php artisan tinker --execute="
-try {
-    \$pdo = DB::connection('mysql')->getPdo();
-    echo 'Laravel DB manager: SUCCESS' . PHP_EOL;
-
-    \$result = DB::connection('mysql')
-        ->table('sessions')
-        ->limit(1)
-        ->get();
-
-    echo 'Sessions query: SUCCESS' . PHP_EOL;
-} catch (Throwable \$e) {
-    echo 'Laravel DB manager: FAILED' . PHP_EOL;
-    echo \$e->getMessage() . PHP_EOL;
-    exit(1);
-}
-"
 
 echo "Creating storage link..."
 
@@ -64,8 +32,6 @@ echo "Clearing Laravel caches..."
 php artisan config:clear
 php artisan route:clear
 php artisan view:clear
-
-
 
 echo "Testing Laravel PDO SSL connection..."
 
@@ -89,30 +55,9 @@ try {
 }
 '
 
-
-echo "Checking PHP-FPM SSL environment..."
-
-php-fpm -tt 2>&1 | head -50
-
 echo "Starting PHP-FPM..."
 
 php-fpm -D
-
-sleep 2
-
-echo "Checking PHP-FPM process..."
-
-ps aux | grep php-fpm
-
-echo "Checking PHP-FPM environment..."
-
-PHP_FPM_PID=$(pgrep -o php-fpm)
-
-if [ -n "$PHP_FPM_PID" ]; then
-    tr '\0' '\n' < /proc/$PHP_FPM_PID/environ | grep -E '^(DB_|MYSQL_)' | sed 's/DB_PASSWORD=.*/DB_PASSWORD=HIDDEN/'
-fi
-
-
 
 echo "Starting Nginx on port $PORT..."
 
