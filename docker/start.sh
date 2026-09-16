@@ -28,6 +28,11 @@ php artisan storage:link || true
 echo "Starting PHP-FPM..."
 
 php-fpm -D
+echo "Starting Laravel log output..."
+
+touch /var/www/html/storage/logs/laravel.log
+
+tail -F /var/www/html/storage/logs/laravel.log &
 
 echo "Starting Nginx..."
 
