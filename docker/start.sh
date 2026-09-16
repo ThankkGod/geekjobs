@@ -8,6 +8,10 @@ echo "Testing database connection..."
 
 php artisan db:show --database=mysql
 
+echo "Running database migrations..."
+
+php artisan migrate --force
+
 # Fix permissions
 chown -R www-data:www-data /var/www/html/storage
 chown -R www-data:www-data /var/www/html/bootstrap/cache
