@@ -12,8 +12,16 @@ echo "Checking Aiven SSL certificate..."
 
 if [ -f "$MYSQL_ATTR_SSL_CA" ]; then
     echo "Aiven CA certificate found at: $MYSQL_ATTR_SSL_CA"
+
+    cp "$MYSQL_ATTR_SSL_CA" /tmp/aiven-ca.pem
+    chmod 644 /tmp/aiven-ca.pem
+
+    export MYSQL_ATTR_SSL_CA=/tmp/aiven-ca.pem
+
+    echo "Using readable Aiven CA certificate: $MYSQL_ATTR_SSL_CA"
 else
     echo "ERROR: Aiven CA certificate NOT found at: $MYSQL_ATTR_SSL_CA"
+    exit 1
 fi
 
 # Replace __PORT__ with Render's actual port
