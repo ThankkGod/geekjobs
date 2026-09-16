@@ -35,6 +35,26 @@ dump([
 
 php artisan db:show
 
+echo "Testing Laravel DB manager..."
+
+php artisan tinker --execute="
+try {
+    \$pdo = DB::connection('mysql')->getPdo();
+    echo 'Laravel DB manager: SUCCESS' . PHP_EOL;
+
+    \$result = DB::connection('mysql')
+        ->table('sessions')
+        ->limit(1)
+        ->get();
+
+    echo 'Sessions query: SUCCESS' . PHP_EOL;
+} catch (Throwable \$e) {
+    echo 'Laravel DB manager: FAILED' . PHP_EOL;
+    echo \$e->getMessage() . PHP_EOL;
+    exit(1);
+}
+"
+
 echo "Creating storage link..."
 
 php artisan storage:link || true
