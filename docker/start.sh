@@ -8,6 +8,14 @@ PORT=${PORT:-10000}
 
 echo "Using port: $PORT"
 
+echo "Checking Aiven SSL certificate..."
+
+if [ -f "$MYSQL_ATTR_SSL_CA" ]; then
+    echo "Aiven CA certificate found at: $MYSQL_ATTR_SSL_CA"
+else
+    echo "ERROR: Aiven CA certificate NOT found at: $MYSQL_ATTR_SSL_CA"
+fi
+
 # Replace __PORT__ with Render's actual port
 sed -i "s/__PORT__/$PORT/g" /etc/nginx/conf.d/default.conf
 
