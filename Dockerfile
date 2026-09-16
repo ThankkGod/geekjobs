@@ -33,8 +33,9 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libonig-dev \
     libxml2-dev \
+    libicu-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-   && docker-php-ext-install \
+    && docker-php-ext-install \
     pdo_mysql \
     mbstring \
     exif \
@@ -44,7 +45,6 @@ RUN apt-get update && apt-get install -y \
     zip \
     opcache \
     intl
-
 
 # =========================================================
 # Install Composer
