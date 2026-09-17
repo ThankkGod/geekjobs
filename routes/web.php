@@ -31,6 +31,14 @@ use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\DB;
 
+
+
+Route::get('/failed-jobs', function () {
+    return DB::table('failed_jobs')
+        ->latest('id')
+        ->first();
+});
+
 Route::get('/failed-jobs', function () {
     return DB::table('failed_jobs')
         ->select('id', 'exception', 'failed_at')
