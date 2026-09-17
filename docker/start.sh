@@ -88,6 +88,10 @@ echo "Starting PHP-FPM..."
 php-fpm -D
 
 
+echo "Starting Laravel queue worker..."
+
+php artisan queue:work --sleep=3 --tries=1 --timeout=90 -vvv &
+
 echo "Testing Nginx configuration..."
 
 nginx -t
