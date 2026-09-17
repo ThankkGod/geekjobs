@@ -87,7 +87,10 @@ echo "Starting PHP-FPM..."
 
 php-fpm -D
 
+echo "Starting Laravel queue worker..."
+
+php artisan queue:work --sleep=3 --tries=3 --timeout=90 &
+
 echo "Starting Nginx on port $PORT..."
 
-tail -F /var/www/html/storage/logs/laravel.log &
 nginx -g "daemon off;"
