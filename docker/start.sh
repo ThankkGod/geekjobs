@@ -87,20 +87,6 @@ echo "Starting PHP-FPM..."
 
 php-fpm -D
 
-echo "Testing Gmail SMTP connection..."
-
-php -r '
-$fp = @fsockopen("smtp.gmail.com", 587, $errno, $errstr, 15);
-
-if ($fp) {
-    echo "Gmail SMTP connection: SUCCESS\n";
-    fclose($fp);
-} else {
-    echo "Gmail SMTP connection: FAILED\n";
-    echo "Error: $errno - $errstr\n";
-}
-'
-
 
 echo "Starting Laravel queue worker..."
 
