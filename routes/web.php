@@ -28,6 +28,16 @@ use App\Http\Middleware\StatusBlockMiddleware;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
+
+use Illuminate\Support\Facades\DB;
+
+Route::get('/failed-jobs', function () {
+    return DB::table('failed_jobs')
+        ->select('id', 'exception', 'failed_at')
+        ->latest('id')
+        ->first();
+});
+
 // Home index related routes
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
